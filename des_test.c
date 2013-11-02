@@ -1038,13 +1038,20 @@ int parse_arguments( char *buf, size_t len, char *params[50] )
     return( cnt );
 }
 
-int main()
+int main(int argc, char **argv)
 {
     int ret, i, cnt, total_errors = 0, total_tests = 0, total_skipped = 0;
-    const char *filename = "/home/duythanhphan/Task/polarssl/polarssl-1.3.1/tests/suites/test_suite_des.data";
+    const char *filename;
     FILE *file;
     char buf[5000];
     char *params[50];
+
+    if (argc != 2) {
+        printf("Usage: des_test test_suite_des.data");
+        exit(EXIT_FAILURE);
+    }
+
+    filename = argv[1];
 
 #if defined(POLARSSL_MEMORY_BUFFER_ALLOC_C)
     unsigned char alloc_buf[1000000];
