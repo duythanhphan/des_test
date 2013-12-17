@@ -1,0 +1,7 @@
+1. How to build:
+	make clean
+	make all
+
+2. How to run:
+	./des_test
+
